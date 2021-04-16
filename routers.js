@@ -8,6 +8,7 @@ const router = Router();
 
 router.get("/weather/city", getWeatherForCity);
 
+
 router.get("/weather/coordinates", getWeatherForCityWithCoordinates);
 
 export default router;
