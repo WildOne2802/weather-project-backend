@@ -27,12 +27,14 @@ async function start() {
             console.log(`Launched server on port ${PORT}`);
         });
     } catch (e) {
-        console.log(e)
+        console.log(e);
     }
 }
 
 // app.get('/favourite', (req, res) => {
 //     res.json({});
 // });
+
+
 
 start();
