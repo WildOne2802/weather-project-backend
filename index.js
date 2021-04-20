@@ -9,7 +9,7 @@ const CORS_PORT = process.env.CORS_PORT;
 
 const app = express();
 // app.use(allowCrossDomain);
-// app.use(cors());
+app.use(cors());
 app.use(routes);
 
 app.use((req, res, next) => {
