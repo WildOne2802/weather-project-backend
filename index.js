@@ -8,7 +8,7 @@ const CORS_PORT = process.env.CORS_PORT;
 // const DB_URL = process.env.DB_URL;
 
 const app = express();
-app.use(allowCrossDomain);
+// app.use(allowCrossDomain);
 app.use(cors());
 app.use(routes);
 
