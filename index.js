@@ -9,7 +9,7 @@ const CORS_PORT = process.env.CORS_PORT;
 
 const app = express();
 // app.use(allowCrossDomain);
-app.use(cors());
+// app.use(cors());
 app.use(routes);
 
 async function start() {
@@ -19,9 +19,9 @@ async function start() {
         //     useFindAndModify: false,
         //     useUnifiedTopology: true
         //});
-        app.listen(CORS_PORT, () => {
-            console.log(`CORS-enabled web server listening on port ${CORS_PORT}`);
-        });
+        // app.listen(CORS_PORT, () => {
+        //     console.log(`CORS-enabled web server listening on port ${CORS_PORT}`);
+        // });
 
         app.listen(PORT, () => {
             console.log(`Launched server on port ${PORT}`);
