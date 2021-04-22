@@ -13,7 +13,7 @@ router.get("/weather/city", getWeatherForCity);
 
 router.get("/weather/coordinates", getWeatherForCityWithCoordinates);
 
-router.put("/weather/addCity", addCityToDatabase);
+router.post("/weather/addCity", addCityToDatabase);
 
 router.delete("/weather/removeCity", removeCityFromDatabase);
 
