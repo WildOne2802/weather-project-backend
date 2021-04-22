@@ -14,25 +14,23 @@ let schema = new mongoose.Schema({
 let City = mongoose.model('City', schema);
 
 export async function addCity(name) {
-    let result;
+    console.log(`addCity ${name}`);
+    let result = true;
     let city = new City({
         name: `${name}`
     });
 
-    await city.save((error) => {
+    return city.save((error) => {
             if (error) {
                 result = false;
                 handleError(error);
-            } else {
-                result = true;
             }
         }
     );
-
-    return result;
 }
 
 export async function getCities() {
+    console.log(`getCities`);
     let result;
     await City.find({}, (error, cities) => {
         if (error) {
@@ -50,13 +48,12 @@ export async function getCities() {
 }
 
 export async function removeCity(name) {
-    let result;
+    console.log(`removeCity ${name}`);
+    let result = true;
     await City.deleteOne({name: `${name}`}, (error) => {
         if (error) {
             handleError(error);
             result = false;
-        } else {
-            result = true;
         }
     });
     return result;

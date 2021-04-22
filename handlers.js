@@ -12,6 +12,7 @@ export function getWeatherForCity(req, res) {
                 res.send(weatherData);
             });
         } else {
+            res.sendStatus(404);
             console.log("[getWeatherForCity] API Error");
         }
     });
@@ -25,6 +26,7 @@ export function getWeatherForCityWithCoordinates(req, res) {
                 res.send(weatherData);
             });
         } else {
+            res.sendStatus(404);
             console.log("[getWeatherForCityWithCoordinates] API Error");
         }
     });
@@ -60,9 +62,8 @@ export function getFavourites(req, res) {
 
 export function addCityToDatabase(req, res) {
     try {
-        addCity(req.query.name).then(response => {
-            console.log(response)
-            res.send(response)
+        addCity(req.query.name).then(() => {
+            res.sendStatus(200)
         });
     } catch (e) {
         res.send(e);
@@ -71,7 +72,9 @@ export function addCityToDatabase(req, res) {
 
 export function removeCityFromDatabase(req, res) {
     try {
-        removeCity(req.query.name).then(response => res.send(response));
+        removeCity(req.query.name).then(() => {
+            res.sendStatus(200)
+        });
     } catch (e) {
         res.send(e);
     }
