@@ -13,6 +13,7 @@ app.use(routes);
 
 app.use((req, res, next) => {
     res.header("Access-Control-Allow-Origin", process.env.ORIGIN || "*");
+    res.header("Access-Control-Allow-Credentials", process.env.CREDENTIALS || true)
     next();
 });
 

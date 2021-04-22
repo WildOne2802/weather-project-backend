@@ -63,7 +63,7 @@ export function getFavourites(req, res) {
 export function addCityToDatabase(req, res) {
     try {
         addCity(req.query.name).then(() => {
-            res.sendStatus(200)
+            res.sendStatus(200);
         });
     } catch (e) {
         res.send(e);
@@ -73,7 +73,7 @@ export function addCityToDatabase(req, res) {
 export function removeCityFromDatabase(req, res) {
     try {
         removeCity(req.query.name).then(() => {
-            res.sendStatus(200)
+            res.sendStatus(200);
         });
     } catch (e) {
         res.send(e);
