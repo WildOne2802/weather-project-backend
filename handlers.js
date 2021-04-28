@@ -1,35 +1,41 @@
+//change + to ${}
 import https from "https";
 import dotenv from 'dotenv';
-import {getCities, addCity, removeCity} from './mongoDB.js'
+import {getCities, addCity, removeCity} from './mongoDB.js';
+
+import fetch from 'node-fetch';
 
 dotenv.config();
 
 export function getWeatherForCity(req, res) {
-    https.get(process.env.API_URL + "&appid=" + process.env.API_KEY + "&q=" + req.query.name, (response) => {
-        if (response.statusCode === 200) {
-            response.on("data", (data) => {
-                const weatherData = JSON.parse(data);
-                res.send(weatherData);
-            });
-        } else {
-            res.sendStatus(404);
-            console.log("[getWeatherForCity] API Error");
-        }
-    });
+    fetch(`${process.env.API_URL}&appid=${process.env.API_KEY}&q=${req.query.name}`).then(response => response.json()).then(response => res.send(response));
+
+    // https.get(process.env.API_URL + "&appid=" + process.env.API_KEY + "&q=" + req.query.name, (response) => {
+    //     if (response.statusCode === 200) {
+    //         response.on("data", (data) => {
+    //             const weatherData = JSON.parse(data);
+    //             res.send(weatherData);
+    //         });
+    //     } else {
+    //         res.sendStatus(404);
+    //         console.log("[getWeatherForCity] API Error");
+    //     }
+    // });
 }
 
 export function getWeatherForCityWithCoordinates(req, res) {
-    https.get(process.env.API_URL + "&appid=" + process.env.API_KEY + "&lat=" + req.query.lat + "&lon=" + req.query.lon, (response) => {
-        if (response.statusCode === 200) {
-            response.on("data", (data) => {
-                const weatherData = JSON.parse(data);
-                res.send(weatherData);
-            });
-        } else {
-            res.sendStatus(404);
-            console.log("[getWeatherForCityWithCoordinates] API Error");
-        }
-    });
+    fetch(`${process.env.API_URL}&appid=${process.env.API_KEY}&lat=${req.query.lat}&lon=${req.query.lon}`).then(response => response.json()).then(response => res.send(response));
+    // https.get(process.env.API_URL + "&appid=" + process.env.API_KEY + "&lat=" + req.query.lat + "&lon=" + req.query.lon, (response) => {
+    //     if (response.statusCode === 200) {
+    //         response.on("data", (data) => {
+    //             const weatherData = JSON.parse(data);
+    //             res.send(weatherData);
+    //         });
+    //     } else {
+    //         res.sendStatus(404);
+    //         console.log("[getWeatherForCityWithCoordinates] API Error");
+    //     }
+    // });
 }
 
 // export async function getFavourites(req, res) {

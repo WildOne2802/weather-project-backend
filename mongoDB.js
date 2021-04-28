@@ -34,7 +34,7 @@ export async function getCities() {
     let result;
     await City.find({}, (error, cities) => {
         if (error) {
-            handleError(error)
+            handleError(error);
             result = false;
         } else {
             result = [];
