@@ -31,21 +31,8 @@ export async function addCity(name) {
 
 export async function getCities() {
     console.log(`getCities`);
-    let result;
-    const res = City.find({}, (error, cities) => {
-        if (error) {
-            handleError(error);
-            result = false;
-        } else {
-            result = [];
-            cities.forEach((city) => {
-                // console.log(city);
-                result.push(city.name);
-            });
-        }
-    });
+    return await City.find({});
 
-    return res.then(() => result);
 }
 
 export async function removeCity(name) {
