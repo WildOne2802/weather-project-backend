@@ -13,9 +13,9 @@ router.get("/weather/city", getWeatherForCity);
 
 router.get("/weather/coordinates", getWeatherForCityWithCoordinates);
 
-router.post("/weather/addCity", addCityToDatabase);
+router.post("/weather/favourites", addCityToDatabase);
 
-router.delete("/weather/removeCity", removeCityFromDatabase);
+router.delete("/weather/favourites", removeCityFromDatabase);
 
 router.get("/weather/favourites", getFavourites);
 
