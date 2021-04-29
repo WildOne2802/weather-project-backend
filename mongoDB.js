@@ -31,8 +31,12 @@ export async function addCity(name) {
 
 export async function getCities() {
     console.log(`getCities`);
-    return await City.find({});
-
+    let result = []
+    const res = await City.find({});
+    res.map(x => {
+        result.push(x.name)
+    });
+    return result;
 }
 
 export async function removeCity(name) {

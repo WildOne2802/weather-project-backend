@@ -8,7 +8,7 @@ import fetch from 'node-fetch';
 dotenv.config();
 
 export function getWeatherForCity(req, res) {
-    fetch(`${process.env.API_URL}&appid=${process.env.API_KEY}&q=${req.query.name}`).then(response => response.json()).then(response => res.send(response));
+    fetch(`${process.env.API_URL}&appid=${process.env.API_KEY}&q=${encodeURIComponent(req.query.name)}`).then(response => response.json()).then(response => res.send(response));
 
     // https.get(process.env.API_URL + "&appid=" + process.env.API_KEY + "&q=" + req.query.name, (response) => {
     //     if (response.statusCode === 200) {
