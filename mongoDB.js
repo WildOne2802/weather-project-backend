@@ -32,7 +32,7 @@ export async function addCity(name) {
 export async function getCities() {
     console.log(`getCities`);
     let result;
-    await City.find({}, (error, cities) => {
+    const res = City.find({}, (error, cities) => {
         if (error) {
             handleError(error);
             result = false;
@@ -44,7 +44,8 @@ export async function getCities() {
             });
         }
     });
-    return result;
+
+    return res.then(() => result);
 }
 
 export async function removeCity(name) {
